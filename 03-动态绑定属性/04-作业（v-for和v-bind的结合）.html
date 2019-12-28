@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 作业需求：点击列表中的哪一项，哪一项变成红色 -->
+<div id='app'>
+  <ul>
+    <li v-for="item, idx in songs" :class="{active: idx === nidx}" @click="liClick(idx)">
+    {{item}}
+    </li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      songs: ['清明雨上', '半城烟沙', '雨幕', '拆东墙'],
+      nidx: 0
+    },
+    methods: {
+      liClick: function(idx) {
+        this.nidx = idx
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
