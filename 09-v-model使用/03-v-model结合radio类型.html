@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+
+<div id='app'>
+  <!-- 在没有v-model时，必须添加name属性，才是互斥的，因为往服务器提交时，是将name作为key提交的。但有v-model属性，name可以删掉。 -->
+  <label for="male">
+    <input type="radio" id="male" name="sex" value="男" v-model="sex"> 男
+  </label>
+  <label for="female">
+    <input type="radio" id="female" name="sex" value="女" v-model="sex"> 女
+  </label>
+  <h2>您选择的性别是： {{sex}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello world!',
+      sex: '男'
+    }
+  })
+</script>
+
+</body>
+</html>
