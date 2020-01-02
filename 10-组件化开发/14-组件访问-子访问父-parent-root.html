@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      我是cpn组件
+      <ccpn></ccpn>
+    </div>
+  </template>
+
+  <template id='ccpn'>
+    <div>
+      我是子组件
+      <button @click="btnClick">按钮</button>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const ccpn = {
+      template: '#ccpn',
+      methods: {
+        btnClick() {
+          // 1.访问父组件
+          console.log(this.$parent)
+          console.log(this.$parent.name)
+
+          // 2.访问根组件
+          console.log(this.$root)
+          console.log(this.$root.message)
+        }
+      }
+    }
+
+    const cpn = {
+      template: '#cpn',
+      data() {
+        return {
+          name: '我是cpn组件的name'
+        }
+      },
+      methods: {
+        
+      },
+      components: {
+        ccpn
+      }
+    }
+    
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello world!',
+      },
+      components: {
+        cpn
+      },
+      methods: {
+      },
+      computed: {},
+      filters: {},
+    });
+  </script>
+</body>
+
+</html>
