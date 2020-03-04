@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // setTimeout(function() {
+    //   console.log(1, this); //window
+    // })
+
+    // setTimeout(() => {
+    //   console.log(2, this); // window
+    // })
+
+    // 问题: 箭头函数中的this是如何查找的?
+    // 结论: 向外层作用域中一层层查找, 直到有this的定义
+    // const obj = {
+    //   aaa() {
+    //     setTimeout(function() {
+    //       console.log(3, this); // window
+    //     })
+
+    //     console.log(4, this); // obj对象
+
+    //     setTimeout(() => {
+    //       console.log(5, this); // obj对象
+    //     })
+    //   }
+    // }
+    // obj.aaa()
+
+    const obj = {
+      aaa() {
+        setTimeout(function() {
+          setTimeout(function() {
+            console.log(1, this); // window
+          })
+
+          setTimeout(() => {
+            console.log(2, this); // window
+          })
+        })
+
+        setTimeout(() => {
+          setTimeout(function() {
+            console.log(3, this); // window
+          })
+
+          setTimeout(() => {
+            console.log(4, this); // obj对象
+          })
+        })
+      }
+    }
+    obj.aaa()
+  </script>
+</body>
+</html>
