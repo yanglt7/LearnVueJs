@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.setTimeout的使用
+    // setTimeout(() => {
+    //   console.log('Hello World');
+    // }, 1000)
+
+    // 什么时候需要用到promise
+    // 一般是有异步操作时, 利用promise对异步操作进行封装
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // 成功的时候调用resolve
+        // resolve('Hello World')
+
+        // 失败的时候调用reject
+        reject('error message')
+      }, 1000)
+    }).then((data) => {
+      // 处理代码
+      console.log(data);
+    }).catch(err => {
+      console.log(err);
+      
+    })
+
+  </script>
+</body>
+</html>
